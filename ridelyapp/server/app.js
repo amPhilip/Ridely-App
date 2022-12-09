@@ -1,17 +1,16 @@
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const cookieParser = require("cookie-parser");
 const cors = require("cors");
-//const connectDB = require("./database/conn.js");
+require("dotenv").config();
+const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 
-//dotenv.config({ path: "./env" });
-dotenv.config();
-
-//DB
-require("./database/conn");
-//connectDB();
+mongoose
+  .connect(
+    "mongodb+srv://ridelyadmin:iamridelyadmin@cluster0.rditmgy.mongodb.net/retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then((res) => console.log("Connected to db"));
 
 app.use(cors());
 app.use(express.json());
@@ -29,3 +28,22 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
+
+//const connectDB = require("./database/db.js");
+
+//connectDB();
+//const connectDB = require("./database/conn.js");
+
+//dotenv.config({ path: "./env" });
+
+//connectDB();
+//require("./database/conn");
+
+//connect with
+
+/*
+mongoose.connect(process.env.DATABASE).then(() => {
+  console.log("Connected to DB");
+}).catch((err) => {
+  console.log(err.message);
+});*/

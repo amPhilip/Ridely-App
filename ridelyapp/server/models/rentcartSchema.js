@@ -1,49 +1,45 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-
-const rentcartSchema = new mongoose.Schema({
+const rentcartSchema = new mongoose.Schema(
+  {
     userById: {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'User',
-        required : true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
     cartItems: [
-        {
-            rentcarid: {
-                type : mongoose.Schema.Types.ObjectId,
-                ref : 'Rentcar',
-                required : true
-            },
-            requiredhours: {
-                type : Number,
-                required : true
-            },
-            rentperhour: {
-                type : Number,
-                required : true
-            },
-            totalbill: {
-                type : Number,
-                required : true
-            },
-            brand: {
-                type : String,
-                required : true
-            },
-            model: {
-                type : String,
-                required : true
-            }
-        }
-    ]
+      {
+        rentcarid: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Rentcar",
+          required: true,
+        },
+        requiredhours: {
+          type: Number,
+          required: true,
+        },
+        rentperhour: {
+          type: Number,
+          required: true,
+        },
+        totalbill: {
+          type: Number,
+          required: true,
+        },
+        brand: {
+          type: String,
+          required: true,
+        },
+        model: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
-},{timestamps:true})
-
-
-
-
-const Rentcart = mongoose.model('RENTCART', rentcartSchema);
+const Rentcart = mongoose.model("RENTCART", rentcartSchema);
 
 module.exports = Rentcart;
-
-
